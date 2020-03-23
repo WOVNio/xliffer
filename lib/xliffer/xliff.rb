@@ -8,7 +8,7 @@ module XLIFFer
       text = case xliff
              when ::IO then xliff.read
              when ::String then xliff
-             else fail ArgumentError, 'Expects an IO or String'
+             else raise ArgumentError, 'Expects an IO or String'
              end
 
       parse(text)
@@ -18,6 +18,10 @@ module XLIFFer
       @xml.to_xml
     end
 
+    def self.xml_element?(xml)
+      xml.is_a? Nokogiri::XML::Element
+    end
+
     private
 
     def parse(text)
@@ -25,7 +29,7 @@ module XLIFFer
 
       @xml.remove_namespaces!
       root = @xml.xpath('/xliff')
-      fail FormatError, 'Not a XLIFF file' unless root.any?
+      raise FormatError, 'Not a XLIFF file' unless root.any?
 
       @version = get_version(root)
       @files = parse_files(root)
@@ -38,10 +42,6 @@ module XLIFFer
 
     def parse_files(root)
       root.xpath('//file').map { |f| File.new(f) }
-    end
-
-    def self.xml_element?(xml)
-      xml.is_a? Nokogiri::XML::Element
     end
   end
 end

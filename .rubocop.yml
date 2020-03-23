@@ -9,5 +9,21 @@ Style/HashSyntax:
 Style/Documentation:
   Enabled: false
 
+# Missing magic comment
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Freeze mutable objects assigned to constants.
+Style/MutableConstant:
+  Enabled: false
+
 Metrics/ModuleLength:
-   Max: 250
+  Max: 250
+
+# Method has too many line
+Metrics/MethodLength:
+  Max: 25
+
+# Block has too many lines
+Metrics/BlockLength:
+  Enabled: false

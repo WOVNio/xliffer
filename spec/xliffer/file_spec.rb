@@ -104,7 +104,7 @@ module XLIFFer
 
     describe 'string accessors' do
       let(:xml) do
-        <<-EOF
+        <<-XML
         <file>
           <trans-unit id="hello">
             <source>Hello World</source>
@@ -118,7 +118,7 @@ module XLIFFer
             <source>Missing</source>
           </trans-unit>
         </file>
-        EOF
+        XML
       end
 
       let(:subject) do
@@ -150,12 +150,12 @@ module XLIFFer
 
     describe '#strings' do
       let(:trans_unit) do
-        <<-EOF
+        <<-XML
         <trans-unit id="my id">
           <source>Hello World</source>
           <target>Bonjour le monde</target>
         </trans-unit>
-        EOF
+        XML
       end
       it 'is an array ' do
         xml = Nokogiri::XML.parse('<xliff><file></file></xliff>')

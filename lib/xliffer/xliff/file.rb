@@ -4,10 +4,11 @@ module XLIFFer
   class XLIFF
     class File
       attr_reader :source_language, :target_language, :original, :strings
-      alias_method :file_name, :original
+      alias file_name original
+
       def initialize(xml)
         unless XLIFF.xml_element?(xml) && file?(xml)
-          fail ArgumentError, "can't create a File without a file subtree"
+          raise ArgumentError, "can't create a File without a file subtree"
         end
 
         @xml = xml
