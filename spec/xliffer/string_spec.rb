@@ -4,12 +4,12 @@ require 'nokogiri'
 module XLIFFer
   describe XLIFF::String do
     let(:trans_unit) do
-      <<-EOF
+      <<-XML
       <trans-unit id="my id">
         <source>Hello World</source>
         <target>Bonjour le monde</target>
       </trans-unit>
-      EOF
+      XML
     end
 
     let(:xml) do
@@ -104,6 +104,30 @@ module XLIFFer
         string = XLIFF::String.new(trans_unit_node)
         string.source = 'Hola Mundo'
         expect(string.source).to eq 'Hola Mundo'
+      end
+    end
+
+    describe '#state' do
+      it 'is nil if not defined' do
+        xml = <<-XML
+        <trans-unit>
+          <source></source>
+          <target></target>
+        </trans-unit>
+        XML
+        trans_unit_node = Nokogiri::XML.parse(xml).xpath('//trans-unit').first
+        expect(XLIFF::String.new(trans_unit_node).state).to be nil
+      end
+
+      it 'is the state attribute on target tag' do
+        xml = <<-XML
+        <trans-unit>
+          <source></source>
+          <target state="translated"></target>
+        </trans-unit>
+        XML
+        trans_unit_node = Nokogiri::XML.parse(xml).xpath('//trans-unit').first
+        expect(XLIFF::String.new(trans_unit_node).state).to eq 'translated'
       end
     end
   end

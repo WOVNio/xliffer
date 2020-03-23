@@ -2,6 +2,7 @@
 *.rbc
 *.swp
 .bundle
+vendor/bundle
 .config
 .rvmrc
 coverage
