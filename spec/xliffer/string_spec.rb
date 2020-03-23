@@ -106,5 +106,19 @@ module XLIFFer
         expect(string.source).to eq 'Hola Mundo'
       end
     end
+
+    describe '#state' do
+      it 'is nil if not defined' do
+        xml = '<trans-unit><source></source><target></target></trans-unit>'
+        trans_unit_node = Nokogiri::XML.parse(xml).xpath('//trans-unit').first
+        expect(XLIFF::String.new(trans_unit_node).state).to be nil
+      end
+
+      it 'is the state attribute on target tag' do
+        xml = '<trans-unit><source></source><target state="translated"></target></trans-unit>'
+        trans_unit_node = Nokogiri::XML.parse(xml).xpath('//trans-unit').first
+        expect(XLIFF::String.new(trans_unit_node).state).to eq 'translated'
+      end
+    end
   end
 end

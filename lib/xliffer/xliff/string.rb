@@ -1,7 +1,7 @@
 module XLIFFer
   class XLIFF
     class String
-      attr_reader :id, :source, :target, :note
+      attr_reader :id, :source, :target, :state, :note
       def initialize(trans_unit_xml)
         unless XLIFF.xml_element?(trans_unit_xml) && trans_unit?(trans_unit_xml)
           error_message = "can't create a String without a trans-unit subtree"
@@ -11,8 +11,11 @@ module XLIFFer
         @xml = trans_unit_xml
         @id = @xml.attr('id')
         @source = find_source
-        @target = find_target
         @note   = find_note
+
+        target = find_target
+        @target = target.text
+        @state = target.attr('state')
       end
 
       def target=(val)
@@ -53,7 +56,7 @@ module XLIFFer
           targets << Nokogiri::XML::Node.new('target', @xml)
           @xml.add_child(targets.first)
         end
-        targets.first.text
+        targets.first
       end
 
       def find_note
