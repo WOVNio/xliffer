@@ -3,21 +3,6 @@ version: 2.0
 docker_images: &docker_images
   docker:
     - image: circleci/ruby:2.6.5-stretch-node-browsers
-      environment:
-        RUBY_GC_MALLOC_LIMIT: 1000000000
-        RUBY_GC_HEAP_FREE_SLOTS: 750000
-        RUBY_GC_HEAP_INIT_SLOTS: 750000
-        RAILS_ENV: test
-        # FAIL_FAST: true
-        TERM: xterm-256color
-
-commands:
-  bundle_install:
-    description: Install Ruby dependencies, failing if updates are required
-    steps:
-      - run: bundle config --global https://private-gems-etbu6gsddybg.wovn.io ${PRIVATE_GEM_SOURCE_CREDENTIALS}
-      - run: bundle config --global frozen 1
-      - run: bundle install -j4 --path vendor/bundle
 
 jobs:
   build:
@@ -25,14 +10,10 @@ jobs:
     resource_class: small
     steps:
       - checkout
-      - run:
-          name: Which bundler?
-          command: bundle -v
       - restore_cache:
           keys:
             - xliffer-bundler-{{ checksum "Gemfile.lock" }}
             - xliffer-bundler-
-      #- bundle_install
       - run:
           name: Bundle Install
           command: bundle check --path vendor/bundle || bundle install --path vendor/bundle
