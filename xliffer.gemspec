@@ -13,10 +13,12 @@ Gem::Specification.new do |s|
   s.email       = 'fotanus@gmail.com'
   s.homepage    = 'http://github.com/fotanus/xliff'
 
-  s.add_dependency 'nokogiri', '~> 1.5'
+  s.add_dependency 'nokogiri', '~> 1.10.9'
 
-  s.add_development_dependency 'rspec', '~> 2'
-  s.add_development_dependency 'simplecov', '~> 0.10'
+  s.add_development_dependency 'rspec', '~> 3'
+  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rubocop-performance'
+  s.add_development_dependency 'simplecov', '>= 0.9.0'
 
   s.rubyforge_project = 'xliffer'
 

@@ -17,6 +17,15 @@ Style/FrozenStringLiteralComment:
 Style/MutableConstant:
   Enabled: false
 
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
 Metrics/ModuleLength:
   Max: 250
 
