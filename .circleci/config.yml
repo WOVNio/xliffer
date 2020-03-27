@@ -12,13 +12,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - xliffer-bundler-{{ checksum "Gemfile.lock" }}
+            - xliffer-bundler-{{ checksum "Gemfile" }}
             - xliffer-bundler-
       - run:
           name: Bundle Install
           command: bundle check --path vendor/bundle || bundle install --path vendor/bundle
       - save_cache:
-          key: xliffer-bundler-{{ checksum "Gemfile.lock" }}
+          key: xliffer-bundler-{{ checksum "Gemfile" }}
           paths:
             - vendor/bundle
       - run:
