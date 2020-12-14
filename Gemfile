@@ -3,7 +3,5 @@ source 'http://rubygems.org'
 gemspec
 
 group :test do
-  unless RUBY_VERSION.match(/\A1\.8/)
-    gem 'codeclimate-test-reporter', :require => false
-  end
+  gem 'codeclimate-test-reporter', :require => false unless RUBY_VERSION.match(/\A1\.8/)
 end
