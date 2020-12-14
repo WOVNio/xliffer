@@ -13,6 +13,8 @@ Gem::Specification.new do |s|
   s.email       = 'fotanus@gmail.com'
   s.homepage    = 'http://github.com/fotanus/xliff'
 
+  s.required_ruby_version = Gem::Requirement.new('>= 2.6.6')
+
   s.add_dependency 'nokogiri', '~> 1.10.9'
 
   s.add_development_dependency 'equivalent-xml'
