@@ -100,6 +100,15 @@ module XLIFFer
           expect(subject.target_language).to eq('en')
         end
       end
+
+      describe 'get_attribute' do
+        it 'allows getting arbitrary attributes' do
+          xml_text = '<xliff><file foo="bar"></file></xliff>'
+          file_node = Nokogiri::XML.parse(xml_text).xpath('//file').first
+          subject = XLIFF::File.new file_node
+          expect(subject.get_attribute('foo')).to eq('bar')
+        end
+      end
     end
 
     describe 'string accessors' do
