@@ -66,6 +66,13 @@ module XLIFFer
           XLIFF.new('<xliff><file></file><file></file></xliff>').files.size
         ).to eql(2)
       end
+
+      it 'strips XML namespaces' do
+        xml_text = '<xliff><file xmlns:baz="http://example.com" baz:foo="bar"></file></xliff>'
+        file = XLIFF.new(xml_text).files.first
+        expect(file.get_attribute('baz:foo')).to be nil
+        expect(file.get_attribute('foo')).to eq('bar')
+      end
     end
 
     describe '#to_s' do
