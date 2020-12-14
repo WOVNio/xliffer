@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'nokogiri', '~> 1.10.9'
 
+  s.add_development_dependency 'equivalent-xml'
   s.add_development_dependency 'rspec', '~> 3'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'rubocop-performance'
