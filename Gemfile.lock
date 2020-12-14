@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xliffer (1.0.4)
+    xliffer (1.1.0)
       nokogiri (~> 1.10.9)
 
 GEM
