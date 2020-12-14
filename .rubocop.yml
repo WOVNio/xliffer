@@ -1,3 +1,7 @@
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
 # This will acuse `expect {` from being bad style
 Style/BlockDelimiters:
   Enabled: false
