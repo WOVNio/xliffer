@@ -2,6 +2,7 @@ module XLIFFer
   class XLIFF
     class String
       attr_reader :id, :source, :target, :state, :note
+
       def initialize(trans_unit_xml)
         unless XLIFF.xml_element?(trans_unit_xml) && trans_unit?(trans_unit_xml)
           error_message = "can't create a String without a trans-unit subtree"

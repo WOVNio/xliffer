@@ -13,14 +13,15 @@ Gem::Specification.new do |s|
   s.email       = 'fotanus@gmail.com'
   s.homepage    = 'http://github.com/fotanus/xliff'
 
+  s.required_ruby_version = Gem::Requirement.new('>= 2.6.6')
+
   s.add_dependency 'nokogiri', '~> 1.10.9'
 
+  s.add_development_dependency 'equivalent-xml'
   s.add_development_dependency 'rspec', '~> 3'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'rubocop-performance'
   s.add_development_dependency 'simplecov', '>= 0.9.0'
-
-  s.rubyforge_project = 'xliffer'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

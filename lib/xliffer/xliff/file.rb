@@ -7,9 +7,7 @@ module XLIFFer
       alias file_name original
 
       def initialize(xml)
-        unless XLIFF.xml_element?(xml) && file?(xml)
-          raise ArgumentError, "can't create a File without a file subtree"
-        end
+        raise ArgumentError, "can't create a File without a file subtree" unless XLIFF.xml_element?(xml) && file?(xml)
 
         @xml = xml
 
