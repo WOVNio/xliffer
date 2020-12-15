@@ -35,6 +35,10 @@ module XLIFFer
         @xml['target-language'] = val
       end
 
+      def get_attribute(attr_name)
+        @xml[attr_name]
+      end
+
       private
 
       def file?(xml)
