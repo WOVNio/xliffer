@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = Gem::Requirement.new('>= 2.6.6')
 
-  s.add_dependency 'nokogiri', '~> 1.10.9'
+  s.add_dependency 'nokogiri', '< 2.0'
 
   s.add_development_dependency 'equivalent-xml'
   s.add_development_dependency 'rspec', '~> 3'
